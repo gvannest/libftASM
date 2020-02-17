@@ -1,13 +1,13 @@
 section     .text
 
-globa       _ft_strcmp
+global       _ft_strcmp
 
 _ft_strcmp:
                 push    rbp
                 mov     rbp, rsp
                 sub     rsp, 0x10
-                xor     rdx. rdx 
-                xor     rcx. rcx
+                xor     rdx, rdx 
+                xor     rcx, rcx
 
         loop:
                 mov     dl, byte [rdi]
@@ -20,8 +20,11 @@ _ft_strcmp:
                 jne     end
                 inc     rdi
                 inc     rsi
+				jmp		loop
 
         end:
                 movzx   rax, dl
                 movzx   rdx, cl
-                sub     rax, rdx    
+                sub     rax, rdx
+				leave
+				ret
