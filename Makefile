@@ -6,7 +6,7 @@
 #    By: gvannest <gvannest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 14:25:36 by gvannest          #+#    #+#              #
-#    Updated: 2020/02/15 14:30:09 by gvannest         ###   ########.fr        #
+#    Updated: 2020/02/27 13:20:15 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = exec.out
 VPATH = 	#./libft/ ./printf/ ./GNL/
 CPPFLAGS = 	#./includes/
 MAIN = 		main.c
-SRC = 		ft_strcpy.s ft_strlen.s ft_strcmp.s
+SRC = 		ft_strcpy.s ft_strlen.s ft_strcmp.s ft_write.s ft_read.s ft_strdup
 SRC_NAME =	$(SRC)
 ASM = 		nasm
 ASFLAGS =	-f macho64

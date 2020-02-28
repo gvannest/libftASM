@@ -20,11 +20,11 @@ _ft_strcmp:
                 jne     end
                 inc     rdi
                 inc     rsi
-				jmp		loop
+		jmp	loop
 
         end:
                 movzx   rax, dl
                 movzx   rdx, cl
                 sub     rax, rdx
-				leave
-				ret
+		leave
+		ret
