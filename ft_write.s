@@ -6,10 +6,17 @@ section     .text
 global       _ft_write
 
 _ft_write:
-        push    rbp
-        mov     rbp, rsp
-        sub     rsp, 0x10
-        mov     rax, MACH_SYSCALL(WRITE)
-        syscall
-        leave
-        ret
+                push    rbp
+                mov     rbp, rsp
+                sub     rsp, 0x10
+                mov     rax, MACH_SYSCALL(WRITE)
+                syscall
+                jc      error
+                jmp     return
+
+        error:
+                mov     rax, -1
+
+        return:
+                leave
+                ret

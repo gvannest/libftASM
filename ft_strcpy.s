@@ -13,15 +13,12 @@ _ft_strcpy:
 
     loop:
         mov     dl, byte [rsi]
-        or      dl, dl
-        jz      end_of_string
         mov     byte [rdi], dl
+        or      dl, dl
+        jz      _leave
         inc     rsi
         inc     rdi
         jmp     loop
-        
-    end_of_string:
-        mov     byte [rdi], 0x0
     
     _leave:
         mov     rsp, rbp
