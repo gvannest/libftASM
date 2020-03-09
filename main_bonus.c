@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 
+
 #define COLOR_RED     "\x1b[31m"
 #define COLOR_GREEN   "\x1b[32m"
 #define COLOR_YELLOW  "\x1b[33m"
@@ -9,7 +10,18 @@
 #define COLOR_CYAN    "\x1b[36m"
 #define COLOR_RESET   "\x1b[0m"
 
+typedef struct s_list
+{
+    void            *data;
+    struct s_list   *next;
+}              t_list;
+
+
 int			ft_atoi_base(char *nb, char *base);
+void        ft_list_push_front(t_list **begin_list, void *data);
+int         ft_list_size(t_list *begin_list);
+void        ft_list_sort(t_list **begin_list, int (*cmp)());
+int		    ft_strcmp(const char *s1, char *s2);
 
 static void test_atoi(){
 
@@ -129,7 +141,108 @@ static void test_atoi(){
 
 }
 
+static  void    test_push_front_size(){
+    t_list        **begin;
+
+    t_list        node_lists[5];
+
+    char        *data1 = "Salut ca va?";
+    int         data2 = 3;
+    char        data3 = 'a';
+
+    node_lists[0].data = (void*)data1;
+    node_lists[1].data = (void*)(&data2);
+    node_lists[2].data = (void*)(&data3);
+
+    node_lists[0].next = &(node_lists[1]);
+    node_lists[1].next = &(node_lists[2]);
+    node_lists[2].next = NULL;
+
+    *begin = &(node_lists[0]);
+
+    char    *test_data = "ca marche!! Youhou!";
+
+    ft_list_push_front(begin, (void*)test_data);
+
+    t_list      *list = *begin;
+    int i =0;
+    while (list != NULL){
+        printf("structure at index %d :\n", i);
+        if (i != 2){
+            printf("\tdata: %s\n", (char*)(list->data));
+            printf("\tpointer: %p\n", list);
+        }
+        else{
+            printf("\tdata: %d\n", *((int*)(list->data)));
+            printf("\tpointer: %p\n", list);
+        }
+        i++;
+        list = list->next;
+    }
+
+    list = *begin;
+    i = ft_list_size(list);
+    printf("\nList size is : %d\n", i);
+}
+
+int     comp_int(int *a, int *b)
+{
+    return (*a - *b);
+}
+
+static void     test_sort(){
+    t_list        *begin;
+
+    t_list        node_lists[12];
+
+    int        data1 = 8;
+    int        data2 = 3;
+    int        data3 = 5;
+    int        data4 = -2;
+    int        data5 = 5;
+    int        data6 = 0;
+
+    // char *        data1 = "abcd";
+    // char *        data2 = "abbz";
+    // char *        data3 = "";
+    // char *        data4 = "abcdefgh";
+    // char *        data5 = "abcdefgh";
+    // char *        data6 = "abcdefz";
+
+    node_lists[0].data = (void*)(&data1);
+    node_lists[1].data = (void*)(&data2);
+    node_lists[2].data = (void*)(&data3);
+    node_lists[3].data = (void*)(&data4);
+    node_lists[4].data = (void*)(&data5);
+    node_lists[5].data = (void*)(&data6);
+
+    node_lists[0].next = &(node_lists[1]);
+    node_lists[1].next = &(node_lists[2]);
+    node_lists[2].next = &(node_lists[3]);
+    node_lists[3].next = &(node_lists[4]);
+    node_lists[4].next = &(node_lists[5]);
+    node_lists[5].next = NULL;
+
+
+    begin = node_lists;
+
+    ft_list_sort(&begin, &comp_int);
+
+    t_list      *list = begin;
+    int i =0;
+    while (list != NULL){
+        printf("structure at index %d :\n", i);
+            printf("\tdata: %d\n", *((int*)(list->data)));
+        i++;
+        list = list->next;
+    }  
+
+    
+}
+
 int     main(){
-    test_atoi();
+    // test_atoi();
+    // test_push_front_size();
+    test_sort();
     return 0;
 }

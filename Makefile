@@ -6,7 +6,7 @@
 #    By: gvannest <gvannest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 14:25:36 by gvannest          #+#    #+#              #
-#    Updated: 2020/03/06 18:56:05 by gvannest         ###   ########.fr        #
+#    Updated: 2020/03/09 19:30:11 by gvannest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #COMPILATION
 CC = 		ar
 LFLAGS = 	-rcs
-CFLAGS =	-g -Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror
 ASM = 		nasm
 ASFLAGS =	-f macho64
 
@@ -30,7 +30,7 @@ OBJ_PATH =	objs/
 
 #SOURCES
 SRC = 		ft_strcpy.s ft_strlen.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
-SRC_BONUS =	ft_atoi_base.s
+SRC_BONUS =	ft_atoi_base.s ft_list_push_front.s ft_list_size.s ft_list_sort.s
 
 # LD = 		ld
 # LDFLAGS = 	-lSystem -macosx_version_min 10.14
