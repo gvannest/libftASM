@@ -10,8 +10,6 @@ _ft_list_push_front:
 
         test    rdi, rdi
         jz      _return            ; return if no list
-        cmp     qword [rdi], 0x0
-        je      _return
                           
         mov     [rbp - 0x8], rdi          ;save registers
         mov     [rbp - 0x10], rsi
